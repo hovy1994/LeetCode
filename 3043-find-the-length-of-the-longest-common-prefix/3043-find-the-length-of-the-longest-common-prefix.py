@@ -11,12 +11,12 @@ class Solution(object):
         :rtype: int
         """
         result = 0
-        rootNodes = [None for _ in range(10)]
+        rootNodes = [Node() for _ in range(10)]
         
         for num in arr1:
             numstr = str(num)
-            if rootNodes[int(numstr[0])]==None:
-                rootNodes[int(numstr[0])] = Node()
+            # if rootNodes[int(numstr[0])]==None:
+            #     rootNodes[int(numstr[0])] = Node()
             curNode = rootNodes[int(numstr[0])]
             for i in range(1, len(numstr)):
                 next = int(numstr[i])
@@ -28,7 +28,7 @@ class Solution(object):
             count = 1
             numstr = str(num)
             if rootNodes[int(numstr[0])]==None:
-                continue
+                return 0
             curNode = rootNodes[int(numstr[0])]
             for i in range(1, len(numstr)):
                 next = int(numstr[i])
