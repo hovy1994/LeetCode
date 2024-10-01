@@ -11,7 +11,7 @@ class Solution(object):
     def minimizeSet(self, divisor1, divisor2, uniqueCnt1, uniqueCnt2):
         
         left = 1
-        right = 10**10
+        right = divisor1*divisor2*uniqueCnt1*uniqueCnt2
         lcd = self.lcd(divisor1, divisor2)
         while left<right:
             mid = (left+right)>>1
