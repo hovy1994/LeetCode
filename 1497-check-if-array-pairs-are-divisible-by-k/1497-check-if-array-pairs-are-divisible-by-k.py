@@ -6,15 +6,21 @@ class Solution(object):
             dict[mod] = dict.get(mod, 0)+1
             
         for key in dict:
+            if dict[key]==0:
+                continue
             complement = (k-key)%k
-            repeat = dict[key]
+            
             if key==complement:
-                repeat = int(repeat/2)
-            for _ in range(repeat):
-                dict[key]-=1
-                if dict.get(complement,0)>0:
-                    dict[complement]-=1
+                if dict[key]%2==0:
+                    dict[complement]=0
+                    continue
                 else:
                     return False
+            if dict.get(key, 0)==dict.get(complement,0):
+                dict[key]=0
+                dict[complement]=0
+                continue
+            else:
+                return False
         
         return True
