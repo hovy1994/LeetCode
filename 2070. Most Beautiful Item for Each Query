@@ -1,0 +1,33 @@
+class Solution(object):
+    def findMaxItemIdx(self, items, target):
+        l = 0
+        r = len(items)-1
+        while(l<=r):
+            mid = (l+r)//2
+            if target<items[mid][0]:
+                r=mid-1
+            else:
+                l=mid+1
+                
+        return r if r >= 0 and items[r][0] <= target else -1
+        
+    def maximumBeauty(self, items, queries):
+        """
+        :type items: List[List[int]]
+        :type queries: List[int]
+        :rtype: List[int]
+        """
+        items.sort()
+        maxBeauty = [items[0][1]]
+        answer = []
+        for i in range(1, len(items)):
+            maxBeauty.append(max(items[i][1], maxBeauty[i-1]))
+            
+        for i in range(len(queries)):
+            idx = self.findMaxItemIdx(items, queries[i])
+            if idx==-1:
+                answer.append(0)
+            else:
+                answer.append(maxBeauty[idx])
+        
+        return answer
